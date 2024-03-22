@@ -1,10 +1,20 @@
 package com.github.zipcodewilmington;
 
+import com.github.zipcodewilmington.casino.games.craps.CrapsGame;
 import com.github.zipcodewilmington.casino.games.craps.CrapsPlayer;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 public class CrapsTest {
+
+    private CrapsPlayer crapsPlayer;
+
+    @BeforeEach
+    public void setUp() {
+        crapsPlayer = new CrapsPlayer();
+    }
 
     @Test
     public void testDiceRoll() {
@@ -52,6 +62,18 @@ public class CrapsTest {
     @Test
     public void testPointRoll() {
         int num = CrapsPlayer.diceRoll();
+        int crapsNumOne = 4;
+        int crapsNumTwo = 5;
+        int crapsNumThree = 6;
+        int crapsNumFour = 8;
+        int crapsNumFive = 9;
+        int crapsNumSix = 10;
+
+        boolean expectedPointNum = num == CrapsGame.pointRoll();
+
+        boolean actualPointNum = num == crapsNumOne || num == crapsNumTwo || num == crapsNumThree || num == crapsNumFour || num == crapsNumFive || num == crapsNumSix;
+
+        Assert.assertEquals(expectedPointNum, actualPointNum);
 
     }
 
